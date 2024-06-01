@@ -81,6 +81,19 @@ function Menu() {
 
 // Component for Footer
 function Footer() {
+  // since components are just JS functions, we can do any JS we want in them. Code is executed simply when the function is called, as soon as component is initialized
+  const hour = new Date().getHours();
+  const openHour = 12;
+  const closeHour = 22;
+  const isOpen = hour >= openHour && hour <= closeHour;
+  console.log(isOpen);
+
+  // if (hour >= openHour && hour <= closeHour) {
+  //   alert(`We're currently open!`);
+  // } else {
+  //   alert(`Sorry, we're closed`);
+  // }
+
   return (
     <footer>{new Date().toLocaleTimeString()} We're currently open !</footer>
   );
