@@ -52,7 +52,24 @@ const pizzaData = [
 function App() {
   return (
     <div>
-      <h1>Hello React!</h1>
+      <Header />
+      <Menu />
+      <Footer />
+    </div>
+  );
+}
+
+// Component for Header
+function Header() {
+  return <h1>Fast Pizza Co.</h1>;
+}
+
+// Component for Menu
+function Menu() {
+  return (
+    <div>
+      <h2>Our Menu</h2>
+      <Pizza />
       {/* nesting component */}
       <Pizza />
       {/* reusing the same component */}
@@ -60,6 +77,15 @@ function App() {
       <Pizza />
     </div>
   );
+}
+
+// Component for Footer
+function Footer() {
+  return (
+    <footer>{new Date().toLocaleTimeString()} We're currently open !</footer>
+  );
+
+  // return React.createElement("footer", null, "We're currently open!");
 }
 
 // In React we write new components using functions & declare them in top-level
