@@ -77,16 +77,21 @@ function Header() {
 // Component for Menu
 // Menu component renders multiple Pizza components by passing different props to each instance
 function Menu() {
+  const pizzas = pizzaData;
+  const numPizzas = pizzas.length;
+
   return (
     <main className="menu">
       <h2>Our Menu</h2>
 
-      {/* Rendering a list */}
-      <ul className="pizzas">
-        {pizzaData.map((pizza) => (
-          <Pizza pizzaObj={pizza} key={pizza.name} />
-        ))}
-      </ul>
+      {/* Rendering a list & Conditional Rendering */}
+      {numPizzas > 0 && (
+        <ul className="pizzas">
+          {pizzas.map((pizza) => (
+            <Pizza pizzaObj={pizza} key={pizza.name} />
+          ))}
+        </ul>
+      )}
 
       {/* nesting component */}
       {/* <Pizza
@@ -138,9 +143,15 @@ function Footer() {
   //   alert(`Sorry, we're closed`);
   // }
 
+  // Conditional Rendering
   return (
     <footer className="footer">
-      {new Date().toLocaleTimeString()} We're currently open !
+      {isOpen && (
+        <div className="order">
+          <p>We're open until {closeHour}:00. Come visit us or order online.</p>
+          <button className="btn">ORDER</button>
+        </div>
+      )}
     </footer>
   );
 
