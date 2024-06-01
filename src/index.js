@@ -2,6 +2,7 @@
 
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 const pizzaData = [
   {
@@ -51,7 +52,7 @@ const pizzaData = [
 // Components always must start from the capital letter & return some markup
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -61,13 +62,22 @@ function App() {
 
 // Component for Header
 function Header() {
-  return <h1>Fast Pizza Co.</h1>;
+  return (
+    // this the way of inline styling in JSX, first enter JS mode, then create JS object
+    // <h1 style={{ color: "red", fontSize: "48px", textTransform: "uppercase" }}>
+    //   Fast Pizza Co.
+    // </h1>
+
+    <header className="header">
+      <h1>Fast Pizza Co.</h1>
+    </header>
+  );
 }
 
 // Component for Menu
 function Menu() {
   return (
-    <div>
+    <main className="menu">
       <h2>Our Menu</h2>
       <Pizza />
       {/* nesting component */}
@@ -75,7 +85,7 @@ function Menu() {
       {/* reusing the same component */}
       <Pizza />
       <Pizza />
-    </div>
+    </main>
   );
 }
 
@@ -86,7 +96,6 @@ function Footer() {
   const openHour = 12;
   const closeHour = 22;
   const isOpen = hour >= openHour && hour <= closeHour;
-  console.log(isOpen);
 
   // if (hour >= openHour && hour <= closeHour) {
   //   alert(`We're currently open!`);
@@ -95,7 +104,9 @@ function Footer() {
   // }
 
   return (
-    <footer>{new Date().toLocaleTimeString()} We're currently open !</footer>
+    <footer className="footer">
+      {new Date().toLocaleTimeString()} We're currently open !
+    </footer>
   );
 
   // return React.createElement("footer", null, "We're currently open!");
@@ -108,7 +119,7 @@ function Pizza() {
   return (
     <div>
       <img src="pizzas/spinaci.jpg" alt="Pizza spinaci"></img>
-      <h2>Pizza Spinaci</h2>
+      <h3>Pizza Spinaci</h3>
       <p>Tomato, mozarella, spinach, and ricotta cheese</p>
     </div>
   );
