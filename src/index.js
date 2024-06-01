@@ -75,17 +75,46 @@ function Header() {
 }
 
 // Component for Menu
+// Menu component renders multiple Pizza components by passing different props to each instance
 function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza />
       {/* nesting component */}
-      <Pizza />
+      <Pizza
+        name="Pizza Spinaci"
+        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
+        photoName="pizzas/spinaci.jpg"
+        price={10}
+      />
       {/* reusing the same component */}
-      <Pizza />
-      <Pizza />
+      <Pizza
+        name="Pizza Funghi"
+        ingredients="Tomato, mushrooms"
+        price={12}
+        photoName="pizzas/funghi.jpg"
+      />
+      {/* <Pizza /> */}
+      {/* <Pizza /> */}
     </main>
+  );
+}
+
+// In React we write new components using functions & declare them in top-level
+
+// this component will contain some data about pizza
+// props are like communication channel between parent and child components
+// Pizza component accepts props and uses them to render details about a specific pizza
+function Pizza(props) {
+  return (
+    <div className="pizza">
+      <img src={props.photoName} alt={props.name}></img>
+      <div>
+        <h3>{props.name}</h3>
+        <p>{props.ingredients}</p>
+        <span>{props.price + 3}</span>
+      </div>
+    </div>
   );
 }
 
@@ -110,19 +139,6 @@ function Footer() {
   );
 
   // return React.createElement("footer", null, "We're currently open!");
-}
-
-// In React we write new components using functions & declare them in top-level
-
-// this component will contain some data about pizza
-function Pizza() {
-  return (
-    <div>
-      <img src="pizzas/spinaci.jpg" alt="Pizza spinaci"></img>
-      <h3>Pizza Spinaci</h3>
-      <p>Tomato, mozarella, spinach, and ricotta cheese</p>
-    </div>
-  );
 }
 
 // Render our App in the DOM (in v.18)
