@@ -85,12 +85,14 @@ function Menu() {
       <h2>Our Menu</h2>
 
       {/* Rendering a list & Conditional Rendering */}
-      {numPizzas > 0 && (
+      {numPizzas > 0 ? (
         <ul className="pizzas">
           {pizzas.map((pizza) => (
             <Pizza pizzaObj={pizza} key={pizza.name} />
           ))}
         </ul>
+      ) : (
+        <p>We're still working on our menu. Please come back later 😊</p>
       )}
 
       {/* nesting component */}
@@ -146,11 +148,15 @@ function Footer() {
   // Conditional Rendering
   return (
     <footer className="footer">
-      {isOpen && (
+      {isOpen ? (
         <div className="order">
           <p>We're open until {closeHour}:00. Come visit us or order online.</p>
           <button className="btn">ORDER</button>
         </div>
+      ) : (
+        <p>
+          We're happy to welcome you between {openHour}:00 and {closeHour}:00.
+        </p>
       )}
     </footer>
   );
