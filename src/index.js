@@ -118,18 +118,19 @@ function Menu() {
 // this component will contain some data about pizza
 // props are like communication channel between parent and child components
 // Pizza component accepts props and uses them to render details about a specific pizza
-function Pizza(props) {
-  if (props.pizzaObj.soldOut) {
+// we can directly destructure the 'props', btw the name must be exactly the same
+function Pizza({ pizzaObj }) {
+  if (pizzaObj.soldOut) {
     return null;
   }
 
   return (
     <li className="pizza">
-      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name}></img>
+      <img src={pizzaObj.photoName} alt={pizzaObj.name}></img>
       <div>
-        <h3>{props.pizzaObj.name}</h3>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span>{props.pizzaObj.price}$</span>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.price}$</span>
       </div>
     </li>
   );
